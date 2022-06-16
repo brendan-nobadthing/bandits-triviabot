@@ -35,14 +35,38 @@ fuzzyMatch = (questionString,searchResults) => {
   console.log(result)
 }
 
-fetchSearchResults();
+async function main() {
+  var question = await GetCurrentQuestion();
+
+  fetchSearchResults(); 
+}
+
+
+(async () => {
+  console.log('starting...');
+  await main();
+})();
+
+
+
+
 
 
 async function GetCurrentQuestion() {
   try {
-    const response = await axios.get(`${BaseUrl}/currentQuestion`);
-    console.log(response);
-    return response.data;
+    //const response = await axios.get(`${BaseUrl}/currentQuestion`);
+    //console.log(response);
+    //return response.data;
+
+    return {
+      q: 'A thousand paper what?',
+      a: 'Cranes',
+      b: 'Flowers', 
+      c: 'Monkeys',
+      d: 'Cuts',
+      expiry: 2000
+    }
+
   } catch (error) {
     console.error(error);
   }
